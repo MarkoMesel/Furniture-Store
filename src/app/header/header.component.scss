@@ -9,10 +9,14 @@ header {
     list-style-type: none;
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 25px;  
   }
   
   nav a {
     color: white;
     text-decoration: none;
+
+    &.active {
+      font-weight: bold;
+    }
   }
