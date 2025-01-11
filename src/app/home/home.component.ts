@@ -1,13 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { ProductComponent } from "../product/product.component";
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-home',
-  imports: [ CommonModule ],
+  imports: [CommonModule, ProductComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  constructor(private productService: ProductService) {}
+
+  ngOnInit() {
+    this.productService.getProducts('http://localhost:3000/products', {}).subscribe((products) => {
+      console.log(products);
+    })
+  }
+
   images = [
     { src: '/images/image1.jpg', alt: 'Image 1' },
     { src: '/images/image2.jpg', alt: 'Image 2' },
