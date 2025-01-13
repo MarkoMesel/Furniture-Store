@@ -34,7 +34,6 @@ export interface Product {
     rating: number,
     warranty: string,
     isFeatured: boolean
-
 }
 
 export interface Dimensions {

@@ -1,6 +1,5 @@
 
-  <div class="image-gallery">
-    <div *ngFor="let image of images" class="image-item">
-      <img [src]="image.src" [alt]="image.alt" />
-    </div>
+  <div class="product-gallery">
+    <app-product *ngFor="let product of products" [product]="product" class="image-item">
+    </app-product>
   </div>

@@ -1,16 +1,5 @@
-.image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .image-item img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-.image-item img:hover {
-  transform: scale(1.05);
+.product-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }

@@ -1,1 +1,14 @@
-<p>product works!</p>
+<div class="image-item">
+    <img [src]="product.image" alt="Product Thumbnail">
+    <h2 class="details-header">
+        {{product.name}}
+    </h2>
+    <div class="details-row">
+        <span>Category:</span>
+        <span>{{product.category}}</span>
+    </div>
+    <div class="details-row">
+        <span>Price:</span>
+        <span>{{product.price}}</span>
+    </div>
+</div>
