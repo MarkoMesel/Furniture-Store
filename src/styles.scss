@@ -1,4 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+html {
+  color-scheme: dark;
+  @include mat.theme((
+    color: mat.$violet-palette,
+    density: 0
+  ));
+}
 
 html, body {
     margin: 0;
@@ -8,4 +16,10 @@ html, body {
 
   * {
     font-family: 'Arial';
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Space between icon and text */
   }

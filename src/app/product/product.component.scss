@@ -1,4 +1,3 @@
-
 .image-item img {
     width: 100%;
     max-width: 300px;
@@ -12,6 +11,7 @@
 
 .details-header {
     text-align: center;
+    margin: 10px;
 }
 
 .details-row {
@@ -19,4 +19,10 @@
     justify-content: center;
     gap: 10px;
     align-items: center;
+  }
+
+  .buttons-row {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
   }
