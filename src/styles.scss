@@ -1,11 +1,17 @@
 @use "@angular/material" as mat;
 
+* {
+  font-family: 'Arial';
+  box-sizing: border-box;
+}
+
 html {
   color-scheme: dark;
   @include mat.theme((
     color: mat.$violet-palette,
     density: 0
   ));
+  overflow-y: hidden;
 }
 
 html, body {
@@ -14,12 +20,17 @@ html, body {
     width: 100%;
   }
 
-  * {
-    font-family: 'Arial';
-  }
+header {
+  position: sticky;
+  z-index: 9999;
+  width: 100%;
+  top: 0px;
+  background-color: #333333;
+  color: white;
+}
 
-  button {
-    display: flex;
-    align-items: center;
-    gap: 4px; /* Space between icon and text */
-  }
+button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

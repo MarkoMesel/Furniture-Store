@@ -1,6 +1,14 @@
 <header>
-    <nav>
-      <ul>
+    <nav class="nav-container">
+      <ul class="left-nav">
+        <li>      
+          <button>
+            <mat-icon>add</mat-icon>
+            Add Product
+            </button>
+        </li>
+      </ul>
+      <ul class="center-nav">
         <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
         <li><a routerLink="/about" routerLinkActive="active">About</a></li>
         <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>

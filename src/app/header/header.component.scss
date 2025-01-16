@@ -1,22 +1,33 @@
-/* header.component.css */
-header {
-    background-color: #333333;
-    color: white;
-    padding: 10px;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    gap: 25px;  
-  }
-  
-  nav a {
-    color: white;
-    text-decoration: none;
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 25px;  
+}
 
-    &.active {
-      font-weight: bold;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+
+  &.active {
+    font-weight: bold;
   }
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-nav {
+  margin-right: auto;
+  padding: 0;
+}
+
+.center-nav {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
