@@ -1,0 +1,100 @@
+<div autoFocus class="overlay">
+    <div class="add-product-form">
+        <button mat-icon-button class="close-btn" (click)="closeForm.emit()">
+            <mat-icon>close</mat-icon>
+        </button>
+        <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+            <div class="form-grid">
+                <!-- Left Section -->
+                <div class="form-left">
+                    <!-- Product Name -->
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Product Name</mat-label>
+                        <input matInput formControlName="name" placeholder="Enter product name" required>
+                    </mat-form-field>
+
+                    <!-- Product Price -->
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Price</mat-label>
+                        <input matInput type="number" formControlName="price" placeholder="Enter product price" required>
+                    </mat-form-field>
+
+                    <!-- Product Warranty -->
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Product Warranty</mat-label>
+                        <input matInput formControlName="warranty" placeholder="Enter product warranty" required>
+                    </mat-form-field>
+
+                    <!-- Product Category -->
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option value="furniture">Chair</mat-option>
+                            <mat-option value="electronics">Sofa</mat-option>
+                            <mat-option value="appliances">Table</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <!-- Product Image -->
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Image</mat-label>
+                        <input matInput formControlName="image" placeholder="Enter image url" required>
+                    </mat-form-field>
+                </div>
+
+                <!-- Right Section -->
+                <div class="form-right">
+                    <!-- Product Stock -->
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Stock</mat-label>
+                        <input matInput type="number" formControlName="stock" placeholder="Enter stock number" required>
+                    </mat-form-field>
+
+                    <!-- Product Dimensions -->
+                    <div class="container">
+                        <mat-form-field appearance="fill" class="dimension-field">
+                            <mat-label>Width</mat-label>
+                            <input matInput formControlName="width" placeholder="Enter width" type="number">
+                        </mat-form-field>
+                        
+                        <mat-form-field appearance="fill" class="dimension-field">
+                            <mat-label>Height</mat-label>
+                            <input matInput formControlName="height" placeholder="Enter height" type="number">
+                        </mat-form-field>
+                        
+                        <mat-form-field appearance="fill" class="dimension-field">
+                            <mat-label>Depth</mat-label>
+                            <input matInput formControlName="depth" placeholder="Enter depth" type="number">
+                        </mat-form-field>
+                    </div>
+
+                    <!-- Product Materials -->
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Material</mat-label>
+                        <input matInput formControlName="material" placeholder="Enter materials" required>
+                    </mat-form-field>
+
+                    <!-- Product Rating -->
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Rating</mat-label>
+                        <input matInput type="number" formControlName="rating" placeholder="Enter rating" min="1" max="5" step="0.1" required>
+                    </mat-form-field>
+
+                    <!-- Is Product Featured -->
+                    <mat-checkbox formControlName="isActive" [checked]="false">
+                        Is featured
+                      </mat-checkbox>
+                </div>
+            </div>
+            
+            <!-- Product Description -->
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" placeholder="Enter product description"></textarea>
+            </mat-form-field>
+
+            <!-- Submit Button -->
+            <button mat-raised-button color="primary" type="submit" [disabled]="addProductForm.invalid">Add Product</button>
+        </form>
+    </div>
+</div>

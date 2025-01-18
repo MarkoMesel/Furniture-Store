@@ -2,7 +2,7 @@
     <nav class="nav-container">
       <ul class="left-nav">
         <li>      
-          <button>
+          <button (click)="toggleForm()">
             <mat-icon>add</mat-icon>
             Add Product
             </button>
@@ -15,3 +15,5 @@
       </ul>
     </nav>
   </header>
+
+  <app-add-product *ngIf="isFormVisible" (closeForm)="toggleForm()"></app-add-product>

@@ -1,0 +1,83 @@
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.add-product-form {
+  max-width: 750px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+  .full-width {
+    width: 100%;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 20px; /* Space between form fields */
+}
+
+.form-left, .form-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+  .form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  button[type="button"] {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;  /* Optional: space between fields */
+    flex-wrap: wrap;  /* Allows fields to wrap onto the next line if they overflow */
+  }
+  
+  .dimension-field {
+    flex: 1 1 30%;  /* Allow the fields to take up equal space (with a 30% minimum) */
+    max-width: 30%;  /* Ensures fields won't exceed 30% of the container width */
+  }
