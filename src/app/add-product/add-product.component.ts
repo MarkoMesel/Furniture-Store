@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Product } from '../../types';
 
 @Component({
   selector: 'app-add-product',
@@ -25,7 +26,25 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   styleUrl: './add-product.component.scss'
 })
 export class AddProductComponent implements OnInit {
+  @Input() product: Product = {
+        name: '',
+        price: 0,
+        description: '',
+        category: '',
+        image: '',
+        stock: 0,
+        dimensions: {
+          width: 0,
+          height: 0,
+          depth: 0
+        },
+        material: '',
+        rating: 0,
+        warranty: '',
+        isFeatured: false
+  };
   @Output() closeForm = new EventEmitter<void>();
+  @Output() submit = new EventEmitter<Product>();
 
   addProductForm!: FormGroup;
   constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) {}
@@ -35,17 +54,19 @@ export class AddProductComponent implements OnInit {
     this.addProductForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
-      warranty: ['', Validators.required],
+      description: [''],
       category: ['', Validators.required],
       image: ['', Validators.required],
       stock: ['', [Validators.required, Validators.min(0)]],
-      width: ['', [Validators.required, Validators.min(0)]],
-      height: ['', [Validators.required, Validators.min(0)]],
-      depth: ['', [Validators.required, Validators.min(0)]],
+      dimensions: this.fb.group({
+        width: ['', [Validators.required, Validators.min(0)]],
+        height: ['', [Validators.required, Validators.min(0)]],
+        depth: ['', [Validators.required, Validators.min(0)]],
+      }),
       material: ['', Validators.required],
       rating: ['', [Validators.required, Validators.min(0)]],
-      isActive: [false],
-      description: ['']
+      warranty: ['', Validators.required],
+      isFeatured: [false]
     });
     
 
@@ -57,8 +78,8 @@ export class AddProductComponent implements OnInit {
 
   onSubmit(): void {
     if (this.addProductForm.valid) {
+      this.submit.emit(this.product);
       console.log('Product Data:', this.addProductForm.value);
-      // Handle form submission (e.g., send to server)
     }
   }
 }

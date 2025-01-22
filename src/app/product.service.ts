@@ -13,4 +13,10 @@ export class ProductService {
   getProducts = (url: string, params: any): Observable<Products> => {
     return this.apiService.get(url, params);
   }
+
+  addProduct = (url: string, body: any): Observable<any> => {
+    return this.apiService.post(url, body, {headers: {
+      'Content-Type': 'application/json'
+    }});
+  };
 }

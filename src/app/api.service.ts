@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Options } from '../types';
+import { Options, Product } from '../types';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,5 +16,9 @@ export class ApiService
 
   get<T>(url: string, options: Options): Observable<T> {
     return this.httpClient.get<T>(url, options) as Observable<T>;
+  }
+  
+  post<T>(url: string, body: Product, options: Options): Observable<T> {
+    return this.httpClient.post(url, body, options)as Observable<T>;
   }
 }

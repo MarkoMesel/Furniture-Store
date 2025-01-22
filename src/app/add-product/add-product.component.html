@@ -3,32 +3,32 @@
         <button mat-icon-button class="close-btn" (click)="closeForm.emit()">
             <mat-icon>close</mat-icon>
         </button>
-        <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="addProductForm">
             <div class="form-grid">
                 <!-- Left Section -->
                 <div class="form-left">
                     <!-- Product Name -->
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Product Name</mat-label>
-                        <input matInput formControlName="name" placeholder="Enter product name" required>
+                        <input matInput formControlName="name" placeholder="Enter product name" [(ngModel)]="product.name" required>
                     </mat-form-field>
 
                     <!-- Product Price -->
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Price</mat-label>
-                        <input matInput type="number" formControlName="price" placeholder="Enter product price" required>
+                        <input matInput type="number" formControlName="price" placeholder="Enter product price" [(ngModel)]="product.price" required>
                     </mat-form-field>
 
                     <!-- Product Warranty -->
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Product Warranty</mat-label>
-                        <input matInput formControlName="warranty" placeholder="Enter product warranty" required>
+                        <input matInput formControlName="warranty" placeholder="Enter product warranty" [(ngModel)]="product.warranty" required>
                     </mat-form-field>
 
                     <!-- Product Category -->
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Category</mat-label>
-                        <mat-select formControlName="category">
+                        <mat-select formControlName="category" [(ngModel)]="product.category">
                             <mat-option value="furniture">Chair</mat-option>
                             <mat-option value="electronics">Sofa</mat-option>
                             <mat-option value="appliances">Table</mat-option>
@@ -38,7 +38,7 @@
                     <!-- Product Image -->
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Image</mat-label>
-                        <input matInput formControlName="image" placeholder="Enter image url" required>
+                        <input matInput formControlName="image" placeholder="Enter image url" [(ngModel)]="product.image" required>
                     </mat-form-field>
                 </div>
 
@@ -47,41 +47,41 @@
                     <!-- Product Stock -->
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Stock</mat-label>
-                        <input matInput type="number" formControlName="stock" placeholder="Enter stock number" required>
+                        <input matInput type="number" formControlName="stock" placeholder="Enter stock number" [(ngModel)]="product.stock" required>
                     </mat-form-field>
 
                     <!-- Product Dimensions -->
-                    <div class="container">
+                    <div class="container" formGroupName="dimensions">
                         <mat-form-field appearance="fill" class="dimension-field">
                             <mat-label>Width</mat-label>
-                            <input matInput formControlName="width" placeholder="Enter width" type="number">
+                            <input matInput formControlName="width" placeholder="Enter width" type="number" [(ngModel)]="product.dimensions.width" required>
                         </mat-form-field>
                         
                         <mat-form-field appearance="fill" class="dimension-field">
                             <mat-label>Height</mat-label>
-                            <input matInput formControlName="height" placeholder="Enter height" type="number">
+                            <input matInput formControlName="height" placeholder="Enter height" type="number" [(ngModel)]="product.dimensions.height" required>
                         </mat-form-field>
                         
                         <mat-form-field appearance="fill" class="dimension-field">
                             <mat-label>Depth</mat-label>
-                            <input matInput formControlName="depth" placeholder="Enter depth" type="number">
+                            <input matInput formControlName="depth" placeholder="Enter depth" type="number" [(ngModel)]="product.dimensions.depth" required>
                         </mat-form-field>
                     </div>
 
                     <!-- Product Materials -->
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Material</mat-label>
-                        <input matInput formControlName="material" placeholder="Enter materials" required>
+                        <input matInput formControlName="material" placeholder="Enter materials" [(ngModel)]="product.material" required>
                     </mat-form-field>
 
                     <!-- Product Rating -->
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Rating</mat-label>
-                        <input matInput type="number" formControlName="rating" placeholder="Enter rating" min="1" max="5" step="0.1" required>
+                        <input matInput type="number" formControlName="rating" placeholder="Enter rating" min="1" max="5" step="0.1" [(ngModel)]="product.rating" required>
                     </mat-form-field>
 
                     <!-- Is Product Featured -->
-                    <mat-checkbox formControlName="isActive" [checked]="false">
+                    <mat-checkbox formControlName="isFeatured" [checked]="false" [(ngModel)]="product.isFeatured" >
                         Is featured
                       </mat-checkbox>
                 </div>
@@ -90,11 +90,11 @@
             <!-- Product Description -->
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Description</mat-label>
-                <textarea matInput formControlName="description" placeholder="Enter product description"></textarea>
+                <textarea matInput formControlName="description" placeholder="Enter product description" [(ngModel)]="product.description" ></textarea>
             </mat-form-field>
 
             <!-- Submit Button -->
-            <button mat-raised-button color="primary" type="submit" [disabled]="addProductForm.invalid">Add Product</button>
+            <button mat-raised-button color="primary" type="button" (click)="onSubmit()" [disabled]="addProductForm.invalid">Add Product</button>
         </form>
     </div>
 </div>
