@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { Product } from '../../types';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -11,5 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ProductComponent {
   @Input() product!: Product;
+  @Output() edit: EventEmitter<Product> = new EventEmitter<Product>();
   
+  editProduct(product: Product) {
+    this.edit.emit(this.product);
+  }
 }

@@ -30,7 +30,7 @@ export class AddProductComponent implements OnInit {
         name: '',
         price: 0,
         description: '',
-        category: '',
+        category: 'Chair',
         image: '',
         stock: 0,
         dimensions: {
@@ -55,7 +55,7 @@ export class AddProductComponent implements OnInit {
       name: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
       description: [''],
-      category: ['', Validators.required],
+      category: [''],
       image: ['', Validators.required],
       stock: ['', [Validators.required, Validators.min(0)]],
       dimensions: this.fb.group({

@@ -1,7 +1,6 @@
 
   <div class="product-gallery">
-    <app-product *ngFor="let product of products" [product]="product" class="image-item">
-    </app-product>
-    <app-add-product *ngIf="isFormVisible" (closeForm)="hideForm()" (submit) = "onConfirmAdd($event)"></app-add-product>
+    <app-product *ngFor="let product of products" class="image-item" [product]="product" (edit)="showFormForEdit($event)"></app-product>
+    <app-add-product *ngIf="isFormVisible" (closeForm)="hideForm()" (submit) = "onConfirmAdd($event)" [product] = "selectedProduct"></app-add-product>
   </div>
   

@@ -29,9 +29,9 @@
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Category</mat-label>
                         <mat-select formControlName="category" [(ngModel)]="product.category">
-                            <mat-option value="furniture">Chair</mat-option>
-                            <mat-option value="electronics">Sofa</mat-option>
-                            <mat-option value="appliances">Table</mat-option>
+                            <mat-option value="Chair">Chair</mat-option>
+                            <mat-option value="Sofa">Sofa</mat-option>
+                            <mat-option value="Table">Table</mat-option>
                         </mat-select>
                     </mat-form-field>
 
@@ -81,7 +81,7 @@
                     </mat-form-field>
 
                     <!-- Is Product Featured -->
-                    <mat-checkbox formControlName="isFeatured" [checked]="false" [(ngModel)]="product.isFeatured" >
+                    <mat-checkbox formControlName="isFeatured" checked="false" [(ngModel)]="product.isFeatured" >
                         Is featured
                       </mat-checkbox>
                 </div>

@@ -14,6 +14,23 @@ import { ToggleService } from '../toggle.service';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  selectedProduct: Product = {
+    name: '',
+    price: 0,
+    description: '',
+    category: 'Chair',
+    image: '',
+    stock: 0,
+    dimensions: {
+      width: 0,
+      height: 0,
+      depth: 0
+    },
+    material: '',
+    rating: 0,
+    warranty: '',
+    isFeatured: false
+};
   constructor(private productService: ProductService, private toggleService: ToggleService) {}
   isFormVisible = false;
   products: Product[] = [];
@@ -23,6 +40,11 @@ export class HomeComponent {
       (visible) => (this.isFormVisible = visible)
     )
     this.fetchProducts();
+  }
+
+  showFormForEdit(product: Product) {
+    this.selectedProduct = product;
+    this.toggleService.toggleAddProduct(true);
   }
 
   fetchProducts() {
