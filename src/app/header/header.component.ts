@@ -20,5 +20,6 @@ export class HeaderComponent {
 
   showForm(): void {
     this.toggleService.toggleAddProduct(true);
+    this.toggleService.toggleIsEditProduct(false);
   }
 }

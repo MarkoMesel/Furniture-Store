@@ -6,9 +6,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ToggleService {
   private addProductVisibleSubject = new BehaviorSubject<boolean>(false);
+  private isEditProductFormSubject = new BehaviorSubject<boolean>(false);
   addProductVisible$ = this.addProductVisibleSubject.asObservable();
+  isEditProductForm$ = this.isEditProductFormSubject.asObservable();;
 
   toggleAddProduct(state: boolean) {
     this.addProductVisibleSubject.next(state);
+  }
+
+  toggleIsEditProduct(state: boolean) {
+    this.isEditProductFormSubject.next(state);
   }
 }

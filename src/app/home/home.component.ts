@@ -15,6 +15,7 @@ import { ToggleService } from '../toggle.service';
 })
 export class HomeComponent {
   selectedProduct: Product = {
+    id: 0,
     name: '',
     price: 0,
     description: '',
@@ -33,11 +34,16 @@ export class HomeComponent {
 };
   constructor(private productService: ProductService, private toggleService: ToggleService) {}
   isFormVisible = false;
+  isEditForm = false;
+  
   products: Product[] = [];
 
   ngOnInit() {
     this.toggleService.addProductVisible$.subscribe(
       (visible) => (this.isFormVisible = visible)
+    )
+    this.toggleService.isEditProductForm$.subscribe(
+      (isEditForm) => (this.isEditForm = isEditForm)
     )
     this.fetchProducts();
   }
@@ -45,6 +51,7 @@ export class HomeComponent {
   showFormForEdit(product: Product) {
     this.selectedProduct = product;
     this.toggleService.toggleAddProduct(true);
+    this.toggleService.toggleIsEditProduct(true);
   }
 
   fetchProducts() {
@@ -54,9 +61,32 @@ export class HomeComponent {
     })
   }
 
-  onConfirmAdd(product: Product) {
-    this.addProduct(product);
+  onFormSubmit(product: Product) {
+    if(this.isEditForm)
+    {
+      if(!this.selectedProduct.id) {
+        return;
+      }
+
+      this.editProduct(product, this.selectedProduct.id);
+    }
+    else
+    {
+      this.addProduct(product);
+    }
     this.hideForm();
+  }
+
+  editProduct(product: Product, id: number) {
+    this.productService.editProduct(`http://localhost:3000/products/${id}`, product).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.fetchProducts();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
   hideForm() {

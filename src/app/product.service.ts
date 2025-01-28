@@ -19,4 +19,8 @@ export class ProductService {
       'Content-Type': 'application/json'
     }});
   };
+
+  editProduct = (url: string, body: any): Observable<any> => {
+    return this.apiService.put(url, body, {});
+  };
 }
