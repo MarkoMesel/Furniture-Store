@@ -28,20 +28,11 @@
     flex-direction: column;
     gap: 15px;
   }
-  
-  button {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
   button[type="button"] {
     background-color: #f44336;
     color: white;
   }
-  
+
   .dimension-field {
     flex: 1 1 30%;  /* Allow the fields to take up equal space (with a 30% minimum) */
     max-width: 30%;  /* Ensures fields won't exceed 30% of the container width */
