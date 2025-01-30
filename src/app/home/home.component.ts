@@ -5,11 +5,12 @@ import { ProductService } from '../product.service';
 import { Product } from '../../types';
 import { AddProductComponent } from "../add-product/add-product.component";
 import { ToggleService } from '../toggle.service';
+import { DeleteProductComponent } from "../delete-product/delete-product.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProductComponent, AddProductComponent],
+  imports: [CommonModule, ProductComponent, AddProductComponent, DeleteProductComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -33,14 +34,15 @@ export class HomeComponent {
     isFeatured: false
 };
   constructor(private productService: ProductService, private toggleService: ToggleService) {}
-  isFormVisible = false;
+  isAddOrEditVisible = false;
   isEditForm = false;
+  isDeleteVisible = false;
   
   products: Product[] = [];
 
   ngOnInit() {
-    this.toggleService.addProductVisible$.subscribe(
-      (visible) => (this.isFormVisible = visible)
+    this.toggleService.addOrEditVisible$.subscribe(
+      (visible) => (this.isAddOrEditVisible = visible)
     )
     this.toggleService.isEditProductForm$.subscribe(
       (isEditForm) => (this.isEditForm = isEditForm)
@@ -50,8 +52,13 @@ export class HomeComponent {
 
   showFormForEdit(product: Product) {
     this.selectedProduct = product;
-    this.toggleService.toggleAddProduct(true);
+    this.toggleService.toggleAddOrEditProductVisible(true);
     this.toggleService.toggleIsEditProduct(true);
+  }
+
+  showFormForDelete(product: Product) {
+    this.selectedProduct = product;
+    this.isDeleteVisible = true;
   }
 
   fetchProducts() {
@@ -74,7 +81,28 @@ export class HomeComponent {
     {
       this.addProduct(product);
     }
-    this.hideForm();
+    this.hideAddOrEditForm();
+  }
+
+  onDeleteSubmit() {
+    if(!this.selectedProduct.id) {
+      return;
+    }
+    
+    this.deleteProduct(this.selectedProduct.id);
+    this.hideDeleteForm();
+  }
+
+  deleteProduct(id: number) {
+    this.productService.deleteProduct(`http://localhost:3000/products/${id}`).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.fetchProducts();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
   editProduct(product: Product, id: number) {
@@ -89,8 +117,12 @@ export class HomeComponent {
     });
   }
 
-  hideForm() {
-    this.toggleService.toggleAddProduct(false);
+  hideAddOrEditForm() {
+    this.toggleService.toggleAddOrEditProductVisible(false);
+  }
+
+  hideDeleteForm() {
+    this.isDeleteVisible = false;
   }
 
   addProduct(product: Product) {

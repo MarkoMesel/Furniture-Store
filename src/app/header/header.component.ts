@@ -19,7 +19,7 @@ export class HeaderComponent {
   constructor(private productService: ProductService, private toggleService: ToggleService) {}
 
   showForm(): void {
-    this.toggleService.toggleAddProduct(true);
+    this.toggleService.toggleAddOrEditProductVisible(true);
     this.toggleService.toggleIsEditProduct(false);
   }
 }

@@ -25,4 +25,8 @@ export class ApiService
   put<T>(url: string, body: Product, options: Options): Observable<T> {
     return this.httpClient.put(url, body, options) as Observable<T>;
   }
+
+  delete<T>(url: string, options: Options): Observable<T> {
+    return this.httpClient.delete(url, options) as Observable<T>;
+  }
 }
