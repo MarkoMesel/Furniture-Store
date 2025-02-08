@@ -43,6 +43,7 @@ export class AddProductComponent implements OnInit {
         warranty: '',
         isFeatured: false
   };
+  @Input() submitButtonText: string = 'Add Product';
   @Output() closeForm = new EventEmitter<void>();
   @Output() submit = new EventEmitter<Product>();
 

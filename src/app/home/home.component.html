@@ -1,7 +1,7 @@
 
   <div class="product-gallery">
     <app-product *ngFor="let product of products" class="image-item" [product]="product" (edit)="showFormForEdit($event)" (delete)="showFormForDelete($event)"></app-product>
-    <app-add-product *ngIf="isAddOrEditVisible" (closeForm)="hideAddOrEditForm()" (submit) = "onFormSubmit($event)" [product] = "selectedProduct"></app-add-product>
+    <app-add-product *ngIf="isAddOrEditVisible" (closeForm)="hideAddOrEditForm()" (submit) = "onFormSubmit($event)" [product] = "selectedProduct" [submitButtonText]="isEditForm ? 'Save Changes' : 'Add Product'"></app-add-product>
     <app-delete-product *ngIf="isDeleteVisible" (closeForm)="hideDeleteForm()" (submit) = "onDeleteSubmit()"></app-delete-product>
   </div>
   
