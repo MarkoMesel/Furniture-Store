@@ -1,6 +1,19 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { NgModule } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,35 +26,37 @@ import { Product } from '../../types';
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [ReactiveFormsModule,
+  imports: [
+    ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
     MatIconModule,
-  CommonModule,
-  MatCheckboxModule],
+    CommonModule,
+    MatCheckboxModule,
+  ],
   templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.scss'
+  styleUrl: './add-product.component.scss',
 })
 export class AddProductComponent implements OnInit {
   @Input() product: Product = {
-        name: '',
-        price: 0,
-        description: '',
-        category: 'Chair',
-        image: '',
-        stock: 0,
-        dimensions: {
-          width: 0,
-          height: 0,
-          depth: 0
-        },
-        material: '',
-        rating: 0,
-        warranty: '',
-        isFeatured: false
+    name: '',
+    price: 0,
+    description: '',
+    category: 'Chair',
+    image: '',
+    stock: 0,
+    dimensions: {
+      width: 0,
+      height: 0,
+      depth: 0,
+    },
+    material: '',
+    rating: 0,
+    warranty: '',
+    isFeatured: false,
   };
   @Input() submitButtonText: string = 'Add Product';
   @Output() closeForm = new EventEmitter<void>();
@@ -49,7 +64,7 @@ export class AddProductComponent implements OnInit {
 
   addProductForm!: FormGroup;
   constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) {}
-  
+
   ngOnInit(): void {
     this.cdr.markForCheck();
     this.addProductForm = this.fb.group({
@@ -67,14 +82,12 @@ export class AddProductComponent implements OnInit {
       material: ['', Validators.required],
       rating: ['', [Validators.required, Validators.min(0)]],
       warranty: ['', Validators.required],
-      isFeatured: [false]
+      isFeatured: [false],
     });
-    
 
     setTimeout(() => {
       this.cdr.detectChanges();
     });
-    
   }
 
   onSubmit(): void {
