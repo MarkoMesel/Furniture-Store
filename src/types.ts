@@ -36,6 +36,11 @@ export interface Product {
     isFeatured: boolean
 }
 
+export interface CartItem {
+    product: Product;
+    quantity: number;
+  }
+
 export interface Dimensions {
     width: number,
     height: number,
