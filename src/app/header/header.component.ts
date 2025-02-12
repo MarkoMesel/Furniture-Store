@@ -34,11 +34,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  openCart(): void {
-    // TODO: Implement logic
-    console.log('Opening Cart...');
-  }
-
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
