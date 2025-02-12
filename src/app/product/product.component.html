@@ -13,6 +13,13 @@
         <span>{{product.price}}</span>
     </div>
     <div class="buttons-row">
+        <input type="number" [(ngModel)]="selectedQuantity" min="1" [max]="product.stock">
+        <button (click)="addToCart()">
+            <mat-icon>add_shopping_cart</mat-icon>
+            Add To Cart
+        </button>
+    </div>
+    <div class="buttons-row">
         <button (click)="editProduct(product)">
             <mat-icon>edit</mat-icon>
             Edit
