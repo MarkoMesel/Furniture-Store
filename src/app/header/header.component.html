@@ -13,5 +13,13 @@
         <li><a routerLink="/about" routerLinkActive="active">About</a></li>
         <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
       </ul>
+      <ul>
+        <li>      
+          <button mat-icon-button (click)="openCart()">
+            <mat-icon>shopping_cart</mat-icon>
+            <span class="badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+          </button>
+        </li>
+      </ul>
     </nav>
   </header>
