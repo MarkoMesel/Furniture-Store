@@ -1,0 +1,16 @@
+.price-summary {
+    font-weight: bold;
+  }
+
+.cart-table {
+    display: table;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    th, td {
+        text-align: center;
+        vertical-align: middle;
+      }
+}
+
