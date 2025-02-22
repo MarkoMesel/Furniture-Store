@@ -32,4 +32,9 @@ export class CartService {
       this.cartItemsSubject.next([...currentItems, newCartItem]);
     }
   }
+
+  removeItem(productId: number) {
+    const currentItems = this.cartItemsSubject.value.filter(item => item.product.id !== productId);
+    this.cartItemsSubject.next(currentItems);
+  }
 }

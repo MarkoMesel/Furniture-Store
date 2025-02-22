@@ -7,6 +7,7 @@
       <th>Quantity</th>
       <th>Price</th>
       <th>Total Price</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,12 @@
       <td>{{ item.quantity }}</td>
       <td>{{ item.product.price | currency }}</td>
       <td>{{ (item.product.price * item.quantity) | currency }}</td>
+      <td>
+        <button mat-icon-button color="warn" (click)="removeFromCart(item)">
+          <mat-icon>remove_shopping_cart</mat-icon>
+          Remove From Cart
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
